@@ -1,4 +1,4 @@
-const String _basePath = 'assets/images/';
+const String _basePath = 'lib/assets/images/';
 
 class ImagesConsts {
   static const icPhone = '${_basePath}ic_phone.png';
