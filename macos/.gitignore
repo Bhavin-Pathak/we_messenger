@@ -1,6 +1,8 @@
 # Flutter-related
 **/Flutter/ephemeral/
 **/Pods/
+firebase_app_id_file.json
+GoogleService-info.plist
 
 # Xcode-related
 **/dgph
