@@ -1,6 +1,10 @@
+import 'package:agora_uikit/agora_uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:we_bite/design/colour.dart';
+import 'package:we_bite/screens/call/controllers/call_controller.dart';
 import 'package:we_bite/utils/errors/apploader.dart';
+import 'package:we_bite/utils/video/agoraSDK_config.dart';
 import '../../../models/call.dart';
 
 class CallScreen extends ConsumerStatefulWidget {
@@ -19,28 +23,28 @@ class CallScreen extends ConsumerStatefulWidget {
 }
 
 class _CallScreenState extends ConsumerState<CallScreen> {
-  // AgoraClient? client;
+  AgoraClient? client;
 
   @override
   void initState() {
     super.initState();
 
-   /* client = AgoraClient(
+    client = AgoraClient(
       agoraConnectionData: AgoraConnectionData(
         appId: AgoraConfig.appId,
         channelName: widget.channelId,
-        tokenUrl: AgoraConfig.tokenBaseUrl,
+        tempToken: AgoraConfig.token,
       ),
-    );*/
+    );
 
     initAgora();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Loader(),
-      /*body: client == null
+    return Scaffold(
+      // body: Loader(),
+      body: client == null
           ? const Loader()
           : SafeArea(
               child: Stack(
@@ -69,11 +73,11 @@ class _CallScreenState extends ConsumerState<CallScreen> {
                   ),
                 ],
               ),
-            ),*/
+            ),
     );
   }
 
   void initAgora() async {
-    // await client!.initialize();
+    await client!.initialize();
   }
 }
